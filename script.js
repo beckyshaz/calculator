@@ -1,12 +1,13 @@
 console.log("hello world");
 
+let x;
+let y;
+let op;
+
 
 function add(a, b) {
     return a + b;
 }  
-let a = 5;
-let b = 2;
-console.log(add(5, 2));
 
 
 function subtract(a, b) {
@@ -33,7 +34,20 @@ function devide(a, b) {
     return a / b;
 }  
 
-
-let x = 5;
-let y = 2;
-console.log(devide(5, 2));
+function operate(op, x, y) {
+    if (op == '+') {
+        add(x, y);
+    }
+    
+    else if (op == '-') {
+        subtract(x, y);
+    }
+    
+    else if (op == '*') {
+        multiply(x, y);
+    }
+    
+    else if (op == '/') {
+        devide(x, y);
+    }
+};
