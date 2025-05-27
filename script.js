@@ -2,7 +2,7 @@ console.log("hello world");
 
 let x;
 let y;
-let op;
+let operator;
 
 
 function add(a, b) {
@@ -14,40 +14,50 @@ function subtract(a, b) {
     return a - b;
 }  
 
-let d = 2;
+/*let d = 2;
 let e = 5;
 console.log(subtract(5, 2));
-
+*/
 
 function multiply(a, b) {
     return a * b;
 }  
 
-let f = 5;
-let g = 2;
+
+
 console.log(multiply(5, 2));
 
 
 
 
-function devide(a, b) {
+function divide(a, b) {
     return a / b;
 }  
 
-function operate(op, x, y) {
-    if (op == '+') {
-        add(x, y);
+function operate(a, op, b) {
+    
+    if (op === '+') {
+        return add(a, b);
     }
     
-    else if (op == '-') {
-        subtract(x, y);
+    else if (op === '-') {
+        return subtract(a, b);
     }
     
-    else if (op == '*') {
-        multiply(x, y);
+    else if (op === '*') {
+        return multiply(a, b);
     }
     
-    else if (op == '/') {
-        devide(x, y);
+    else if (op === '/') {
+        return divide(a, b);
     }
-};
+}
+
+let op = '+';
+let num1 = 5;
+let num2 = 10;
+
+console.log(operate(num1, op, num2));
+
+
+console.log(operate(15, '*', 2));
