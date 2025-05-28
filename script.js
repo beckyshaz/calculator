@@ -61,3 +61,6 @@ console.log(operate(num1, op, num2));
 
 
 console.log(operate(15, '*', 2));
+
+
+
