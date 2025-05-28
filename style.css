@@ -1,0 +1,77 @@
+.display {
+    background-color: aliceblue;
+    text-align: center;
+
+}
+
+.container-button {
+    height: 600px;
+    width: 500px;
+}
+
+.first,
+.second,
+.third,
+.fourth,
+.fifth {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+}
+
+
+.ac,
+.mod,
+.del,
+.div,
+.seven,
+.eight,
+.nine,
+.mul,
+.four,
+.five,
+.six,
+.subs,
+.one,
+.two,
+.three,
+.adds,
+.zero,
+.dot {
+    
+    height: 100px;
+    flex: 1;
+    background-color: blue;
+}
+
+.equals{
+    flex: 2;
+    height: 100px;
+    background-color: blue;
+}
+
+.clear,
+.modulo,
+.delete,
+.division,
+.num-seven,
+.num-eight,
+.num-nine,
+.multiply,
+.num-four,
+.num-five,
+.num-six,
+.sub, 
+.num-one,
+.num-two,
+.num-three,
+.add,
+.num-zero,
+.decimal,
+.is-equal {
+    
+    height: 100px;
+    width: 100%;
+
+}
