@@ -5,6 +5,7 @@ let y = "";
 let operators = "";
 let result = null;
 
+let errorMessage = "";
 
 function add(a, b) {
     return a + b;
@@ -35,6 +36,10 @@ function divide(a, b) {
     return a / b;
 }  
 
+function modulo(a, b) {
+    return a % b;
+}
+
 function operate(a, op, b) {
     
     if (op === '+') {
@@ -50,7 +55,12 @@ function operate(a, op, b) {
     }
     
     else if (op === '/') {
+       
         return divide(a, b);
+    }
+
+    else if (op === '%') {
+        return modulo(a, b);
     }
 }
 
@@ -69,6 +79,18 @@ const numButtons = document.querySelectorAll(".num");
 
 const equals = document.querySelector(".is-equal");
 
+const clear = document.querySelector(".clear");
+
+function clearDisplay() {
+    display.textContent = "";
+    x = "";
+    y = "";
+    operators = "";
+    result = null;
+} 
+
+clear.addEventListener("click", clearDisplay);
+
 function numberButtons (event) {
     let number = event.target.value;
     return number;
@@ -84,7 +106,7 @@ function displayNumbers(event) {
         display.textContent = x;
     
     } 
-    else if (result !== null && operators !== "" ) {
+    else if (result !== null && operators !== "") {
     
         x = result;
     
@@ -100,42 +122,7 @@ function displayNumbers(event) {
 
         display.textContent = y;
         
-    }
-    /*else if (x !== "" && y != "" && operators !== "" ) {
-        console.log(`x is ${x}`);
-        console.log(`y is ${y}`);
-        
-        
-        console.log(`operators is ${operators}`);
-
-        result = operate(+x, operators, +y);
-        console.log (`results is ${result}`)
-
-        console.log(`x  b4 clearing is ${x}`);
-        x = "";
-        console.log(`x is ${x}`);
-    
-        x = result;
-        console.log(`x is ${x}`);
-
-        result = null;
-
-        console.log(`Y B4 clearing is ${x}`);
-        y = "";
-        console.log(`y is ${y}`);
-
-        y += event.target.value; 
-        console.log(`y is ${y}`);
-        display.textContent = y;
-
-        console.log(`operators is ${operators}`);
-        result = operate(+x, operators, +y);
-
-        console.log(`result is ${result}`);
-        display.textContent = result
-
-
-    }*/else {
+    }else {
         y += event.target.value;
         display.textContent = y;
     }
@@ -149,24 +136,63 @@ numButtons.forEach(button => button.addEventListener("click", displayNumbers));
 const operatorsButton = document.querySelectorAll(".op");
 
 
+
 function  getoperator(event) {
-    if (x !== "" && y != "" && operators !== "" ) {
-        result = operate(+x, operators, +y);
+    if (x !== "" && operators !== "" && (y === "" || result !== null)) {
+        operators = "";
+        operators = event.target.value;
+    
+
+    }
+    else if (x !== "" && y != "" && operators !== "" ) {
+        result = +operate(+x, operators, +y).toFixed(4);
         display.textContent = result;
         operators = "";
         operators = event.target.value;
     }
+   
     operators = event.target.value; 
-} 
+}  
 
 
 operatorsButton.forEach(operator => operator.addEventListener("click", getoperator));
 
 function returnResults() {
-    result = operate(+x, operators, +y);
+
+   
+    result = +operate(+x, operators, +y).toFixed(4);
+    
     display.textContent = result;
 
-    //operators = "";
+    if (x === "" && y === "" && operators === "") {
+        errorMessage = "please enter the numbers to work on and operator";
+        display.textContent = errorMessage;
+    }
+
+    else if ( x !== "" && y === "" && operators === "") {
+        errorMessage = "please enter the other number and operator";
+        display.textContent = errorMessage;
+    }
+
+
+    else if ( x !== "" && y === "" && operators !== "" ) {
+        errorMessage = "please enter the other number";
+        display.textContent = errorMessage;
+    }
+
+    else if (operators !== "" && x === "" && y === "" ) {
+        errorMessage = "please enter the numbers to work on";
+        display.textContent = errorMessage;
+    }
+
+
+
+
+
+    /*y = "";
+    x = "";
+    result = null;
+    operators = "";*/
 }
 
 equals.addEventListener("click", returnResults);
