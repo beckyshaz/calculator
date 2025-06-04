@@ -81,6 +81,40 @@ const equals = document.querySelector(".is-equal");
 
 const clear = document.querySelector(".clear");
 
+const del = document.querySelector(".delete");
+
+function deleteValue() {
+    if (display.textContent.length > 0) {
+        if (operators === "") {
+
+            let xValue = x;
+            let newXValue = "";
+            for (let i = 0; i < xValue.length; i++ ) {
+                newXValue = xValue.slice(0, -1);
+            }
+            display.textContent = newXValue;
+            x = newXValue;
+        }
+        /*else if (x !== "" && operators !== "" && y === "") {
+            operators = "";
+        }*/else {
+            let yValue = y;
+            let newYValue = "";
+
+            for (i = 0; i < yValue.length; i++) {
+                newYValue = yValue.slice(0, -1);
+                display.textContent = newYValue;
+            }
+            y = newYValue;
+        }
+       
+    }
+
+    
+}
+
+del.addEventListener("click", deleteValue);
+
 function clearDisplay() {
     display.textContent = "";
     x = "";
