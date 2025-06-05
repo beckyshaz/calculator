@@ -83,6 +83,25 @@ const clear = document.querySelector(".clear");
 
 const del = document.querySelector(".delete");
 
+const decimal = document.querySelector(".decimal");
+
+let decimalValue = "";
+
+function addDecimalValues(event) {
+    if (operators === "" ) {
+        decimalValue = event.target.value;
+        x += decimalValue;
+        display.textContent = x;
+    }else {
+        y += decimalValue;
+        display.textContent = y;   
+            
+        }
+
+}
+
+decimal.addEventListener("click", addDecimalValues);
+
 function deleteValue() {
     if (display.textContent.length > 0) {
         if (operators === "") {
