@@ -7,6 +7,10 @@ let result = null;
 
 let errorMessage = "";
 
+let xHasDecimal = false;
+
+let yHasDecimal = false;
+
 function add(a, b) {
     return a + b;
 }  
@@ -89,12 +93,21 @@ let decimalValue = "";
 
 function addDecimalValues(event) {
     if (operators === "" ) {
-        decimalValue = event.target.value;
-        x += decimalValue;
-        display.textContent = x;
+
+        if (!xHasDecimal) {
+            decimalValue = event.target.value;
+            x += decimalValue;
+            display.textContent = x;
+            xHasDecimal = true;
+        }
+       
     }else {
-        y += decimalValue;
-        display.textContent = y;   
+        if(!yHasDecimal) {
+            y += decimalValue;
+            display.textContent = y;
+            yHasDecimal = true;
+        }
+        
             
         }
 
